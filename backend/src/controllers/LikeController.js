@@ -9,6 +9,9 @@ module.exports = {
         post.likes += 1;
 
         await post.save();
+
+        //Enviar os dados do like
+        req.io.emit('like', post);
        
         return res.json(post);
     }

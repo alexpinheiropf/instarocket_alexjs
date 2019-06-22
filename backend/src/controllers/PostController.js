@@ -17,24 +17,30 @@ module.exports = {
 
         //Separar o nome da varial com o ponto (.)
         const [ name ] = image.split('.');
-        const filename = `${name};jpg`;
+        const filename = `${name}.jpg`;
 
+        //Redimensiona o arquivo para 500 px
         await sharp(req.file.path)
             .resize(500) //Tamanho de 500px
             .jpeg({ quality: 70})//Qualidade em 70%
             .toFile(
-                path.resolve(req.file.destination, 'resized', image)
+                path.resolve(req.file.destination, 'resized', filename)
             )
         
+        //Deleta o arquivo original
         fs.unlinkSync(req.file.path);
 
+        //Salva tudo no nosso Banco de Dados (MongoDB)
         const post = await Post.create({
             author,
             place,
             description,
             hashtags,
-            image,
+            image: filename,
         });
+
+        //Emitir a requisição para todos os usuarios que estão na aplicação
+        req.io.emit('post', post);
 
         return res.json(post);
     }
