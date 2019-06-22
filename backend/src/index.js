@@ -1,10 +1,13 @@
-const express = require('express');
+const express = require('express');//importar express
+const mongoose = require('mongoose');
 
-const app = express();
+const app = express();//cria a aplicação chamando o express (criando o servidor)
 
-app.get('/', (req, res) => { //interceptando a rota raiz
-    return res.send(`Hello ${req.query.name}`);//teste Hello World
-});
+mongoose.connect('mongodb+srv://office:office@cluster0-2ldqo.mongodb.net/test?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+})
+
+app.use(require('./routes'));
 
 app.listen(3333);//ouvir a porta
 
