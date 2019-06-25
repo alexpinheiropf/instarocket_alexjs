@@ -30,4 +30,10 @@ Personalization VsCode
       "editor.rulers": [80,120],
       "editor.formatOnSave": false,
       "git.autofetch": true,
+      
+     /* Habilita o EMMET */
+     "emmet.triggerExpansionOnTab": true,
+     "emmet.includeLanguages": {
+       "javascript": "javascriptreact"
+      },
     }
