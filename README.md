@@ -23,7 +23,7 @@ Personalization VsCode
       //Configura tamanho e familia da fonte
       "editor.fontSize": 14,
       "editor.lineHeight": 24,
-      "editor.fontFamily": "Fira Code",
+      "editor.fontFamily": "Fira Code",//Arquivo TTF
       "editor.fontLigatures": true,
 
       //Aplica linhas verticais para lembrar de quebrar linha em códigos muito grandes
