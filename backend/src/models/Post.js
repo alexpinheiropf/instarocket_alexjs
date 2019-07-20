@@ -15,4 +15,4 @@ const PostSchema = new mongoose.Schema({
         timestamps: true, //serve como create e update
     }
 );
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model('Post', PostSchema);//Exportando com o nome de Post

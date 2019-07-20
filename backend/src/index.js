@@ -11,7 +11,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);//O io permite receber e entregar dados
 
-//Faz a conexão com o banco de dados
+//Faz a conexão com o banco de dados MongoDb online
 mongoose.connect('mongodb+srv://office:office@cluster0-2ldqo.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
 })
@@ -19,8 +19,7 @@ mongoose.connect('mongodb+srv://office:office@cluster0-2ldqo.mongodb.net/test?re
 //Criar o proprio middleware para distribuir os dados em realtime
 app.use((req, res, next ) => {
     req.io = io;
-
-    next();
+    next();//segue o fluxo
 })
 
 //Permitir que qualquer url de qualquer servidor possa ter acesso
@@ -29,7 +28,7 @@ app.use(cors());
 //referenciar algum arquivo dentro da pasta
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')));
 
-app.use(require('./routes'));
+app.use(require('./routes'));//Acessa as rotas do Routes.js
 
 server.listen(3333);//ouvir a porta
 

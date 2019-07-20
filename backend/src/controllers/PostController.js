@@ -1,11 +1,11 @@
 const Post = require('../models/Post');
 const sharp = require('sharp');
-const path = require('path');
-const fs = require('fs');
+const path = require('path');//Dependencia do Node
+const fs = require('fs');//Dependencia do Node
 
 module.exports = {
     //Rota de listagem de posts
-    async index(req, res){
+    async index(req, res){//Rota no modo de Middleware
         const posts = await Post.find().sort('-createdAt');
         return res.json(posts);
     },
@@ -23,7 +23,7 @@ module.exports = {
         await sharp(req.file.path)
             .resize(500) //Tamanho de 500px
             .jpeg({ quality: 70})//Qualidade em 70%
-            .toFile(
+            .toFile(//Exporta para novo arquivo
                 path.resolve(req.file.destination, 'resized', filename)
             )
         
