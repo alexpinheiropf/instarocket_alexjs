@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../services/api';
 
 import { View, Image, TouchableOpacity } from 'react-native';
 
@@ -12,6 +13,20 @@ export default class Feed extends Component {
             </TouchableOpacity>
         ),
     });
+    state = {
+      feed : [],
+  };
+
+  async componentDidMount(){
+    // this.registerToSocket();
+
+      //Chamando a API do localhost/posts
+      const response = await api.get('posts');
+
+      console.log( response.data );
+
+      this.setState({ feed : response.data });
+  }
 
   render() {
     return <View />;
