@@ -17,6 +17,6 @@ export default createAppContainer(
             headerTitle: <Image style={{ marginHorizontal: 20 }} source={logo} />,
             headerBackTitle: null,
         },
-        mode: 'modal'
+        mode: 'modal'//Animação de baixo pra cima
     })
 );
