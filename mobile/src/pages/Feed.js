@@ -32,7 +32,7 @@ export default class Feed extends Component {
   }
 
   registerToSocket = () => {
-    const socket = io('http://10.0.2.2:3333');
+    const socket = io('http://192.168.0.105:3333');
 
     // post, like
 
