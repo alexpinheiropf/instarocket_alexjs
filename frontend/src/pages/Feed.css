@@ -36,6 +36,7 @@ section#post-list article header .user-info span.place {
 
 section#post-list article > img {
     width: 100%;
+    height: 350px;
 }
 
 section#post-list article footer {

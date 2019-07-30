@@ -48,12 +48,13 @@ export default class New extends Component {
           name: `${prefix}.${ext}`
         };
 
-        this.setState({ preview });
+        this.setState({ preview, image });
       }
     })
   }
 
   handleSubmit = async () => {
+    
     const data = new FormData();
 
         data.append('image', this.state.image);
@@ -62,13 +63,8 @@ export default class New extends Component {
         data.append('description', this.state.description);
         data.append('hashtags', this.state.hashtags);
 
-        const response =  await api.post('posts', data)
-        // try {
-        
-        // } catch (error) {
-        //   // Tratar o erro adequadamente
-        //   console.log('Erro Aqui');
-        // }
+          const response =  await api.post('posts', data);
+
         this.props.navigation.navigate('Feed');
   }
 
